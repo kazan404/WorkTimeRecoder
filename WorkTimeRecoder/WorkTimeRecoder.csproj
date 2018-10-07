@@ -54,7 +54,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TimeCulcurater.cs" />
+    <Compile Include="ITimeCounter.cs" />
+    <Compile Include="TimeCounter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

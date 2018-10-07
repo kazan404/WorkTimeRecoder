@@ -6,12 +6,32 @@ using System.Threading.Tasks;
 
 namespace WorkTimeRecoder
 {
-    interface ITimeCounter
+    public class TimeCounter : ITimeCounter
     {
-        void StartCount();
+        private DateTime startTime = DateTime.Now;
+        private DateTime stopTime = DateTime.Now;
 
-        void StopCount();
-
-        TimeSpan GetCountTime();
+        public void StartCount()
+        {
+            startTime = DateTime.Now;
+        }
+        public void StopCount()
+        {
+            stopTime = DateTime.Now;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public TimeSpan GetCountTime()
+        {
+            TimeSpan currentTime = DateTime.Now - startTime;
+            return currentTime;
+        }
+        public string GetCountTime(string format)
+        {
+            TimeSpan currentTime = GetCountTime();
+            return currentTime.ToString(format);
+        }
     }
 }
