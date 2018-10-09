@@ -20,7 +20,10 @@ namespace WorkTimeRecoder
         private bool isCounting = false;
         public bool IsCounting { get => isCounting; }
 
+        public TimeCounter()
+        {
 
+        }
         public TimeCounter(TimerTick timerTick)
         {
             timer = new DispatcherTimer(DispatcherPriority.Normal);

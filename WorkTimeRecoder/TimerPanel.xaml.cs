@@ -48,6 +48,7 @@ namespace WorkTimeRecoder
             }
             else
             {
+                TimeText.Text = "00:00:00";
                 timeCounter.StartCount();
                 StartButton.Background = new SolidColorBrush(Colors.Red);
             }
