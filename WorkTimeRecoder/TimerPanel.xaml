@@ -5,8 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WorkTimeRecoder"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="32"
+             Height="AUTO"
+             Width="AUTO"
+             >
+    <StackPanel Orientation="Horizontal">
+        <Button Name="CloseButton" VerticalAlignment="Stretch" Width="28" 
+                Click="CloseButton_Click"
+                Content="×" FontSize="24" FontFamily="Microsoft Sans Serif"/>
+        <TextBox Name="IssueNameText" VerticalAlignment="Stretch" Width="240"
+                 FontSize="24"/>
+        <TextBox Name="TimeText" VerticalAlignment="Stretch" Width="120" IsReadOnly="True"
+                 FontSize="24"/>
+        <Button Name="StartButton" VerticalAlignment="Stretch" Width="28"
+                Background="Green"
+                Click="StartButton_Click"/>
+        <!--
+        <Button Name="StopButton" VerticalAlignment="Stretch" Width="48"
+                Background="Red"
+                Click="StopButton_Click"/>
+         -->
+    </StackPanel>
 </UserControl>

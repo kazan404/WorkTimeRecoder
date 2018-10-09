@@ -20,9 +20,45 @@ namespace WorkTimeRecoder
     /// </summary>
     public partial class MainWindow : Window
     {
+        // TimeCounter timeCounter = new TimeCounter();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void TimerPlusButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(TimerListPanel.Children.Count >= 10)
+            {
+                return;
+            }
+            TimerPanel addTimerPanel = new TimerPanel();
+            string newTimerName = "";
+            int i = 0;
+            while(true)
+            {
+                newTimerName = "Timer" + i;
+                if (TimerListPanel.FindName(newTimerName) == null)
+                {
+                    break;
+                }
+                i++;
+            }
+            addTimerPanel.Name = newTimerName;
+            addTimerPanel.DeleteTimerFunc = DeleteTimer;
+            TimerListPanel.Children.Add(addTimerPanel);
+            TimerListPanel.RegisterName(addTimerPanel.Name, addTimerPanel);
+        }
+
+        public void DeleteTimer(string timerName)
+        {
+            TimerPanel delTimerPanel = (TimerPanel)TimerListPanel.FindName(timerName);
+            if(delTimerPanel == null)
+            {
+                return;
+            }
+            TimerListPanel.Children.Remove(delTimerPanel);
         }
     }
 }
