@@ -13,17 +13,16 @@
         <Button Name="CloseButton" VerticalAlignment="Stretch" Width="28" 
                 Click="CloseButton_Click"
                 Content="×" FontSize="24" FontFamily="Microsoft Sans Serif"/>
-        <TextBox Name="IssueNameText" VerticalAlignment="Stretch" Width="240"
+        <TextBox Name="IssueNameText" VerticalAlignment="Stretch" Width="216"
                  FontSize="24"/>
         <TextBox Name="TimeText" VerticalAlignment="Stretch" Width="120" IsReadOnly="True"
                  FontSize="24"/>
         <Button Name="StartButton" VerticalAlignment="Stretch" Width="28"
                 Background="Green"
                 Click="StartButton_Click"/>
-        <!--
-        <Button Name="StopButton" VerticalAlignment="Stretch" Width="48"
-                Background="Red"
-                Click="StopButton_Click"/>
-         -->
+        <Button Name="ResetButton" VerticalAlignment="Stretch" Width="28"
+                Background="Ivory"
+                Click="ResetButton_Click"
+                Content="■" FontSize="24" FontFamily="Microsoft Sans Serif"/>
     </StackPanel>
 </UserControl>

@@ -11,8 +11,8 @@ namespace WorkTimeRecoder
 
     public class TimeCounter : ITimeCounter
     {
-        private DateTime startTime = DateTime.Now;
-        private DateTime stopTime = DateTime.Now;
+        private DateTime startTime = DateTime.MinValue; // MinValueを、初期化かリセット後とみなす。
+        private DateTime stopTime = DateTime.MinValue;
 
         private DispatcherTimer timer;
         public DispatcherTimer Timer { get => timer; }
@@ -36,7 +36,10 @@ namespace WorkTimeRecoder
             if (isCounting == false)
             {
                 isCounting = true;
-                startTime = DateTime.Now;
+                if (startTime == DateTime.MinValue)
+                {
+                    startTime = DateTime.Now;
+                }
             }
             timer.Start();
         }
@@ -48,6 +51,10 @@ namespace WorkTimeRecoder
                 stopTime = DateTime.Now;
             }
             timer.Stop();
+        }
+        public void ResetCount()
+        {
+            startTime = DateTime.MinValue;
         }
 
         public TimeSpan GetCountTime()
@@ -63,6 +70,7 @@ namespace WorkTimeRecoder
             }
             return currentTime;
         }
+
         public string GetCountTime(string format)
         {
             TimeSpan currentTime = GetCountTime();

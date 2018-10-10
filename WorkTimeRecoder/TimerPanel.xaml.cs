@@ -44,21 +44,25 @@ namespace WorkTimeRecoder
             if (timeCounter.IsCounting == true)
             {
                 timeCounter.StopCount();
+                ResetButton.IsEnabled = true;
+                CloseButton.IsEnabled = true;
                 StartButton.Background = new SolidColorBrush(Colors.Green);
             }
             else
             {
-                TimeText.Text = "00:00:00";
                 timeCounter.StartCount();
+                ResetButton.IsEnabled = false;
+                CloseButton.IsEnabled = false;
                 StartButton.Background = new SolidColorBrush(Colors.Red);
             }
         }
-        /*
-        private void StopButton_Click(object sender, RoutedEventArgs e)
+        
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-
+            timeCounter.ResetCount();
+            TimeText.Text = "00:00:00";
         }
-        */
+        
         private void TimerTickFunc(Object sender, EventArgs e)
         {
             TimeText.Text = timeCounter.GetCountTime(@"hh\:mm\:ss");
