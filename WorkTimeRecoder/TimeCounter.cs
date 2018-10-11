@@ -13,6 +13,7 @@ namespace WorkTimeRecoder
     {
         private DateTime startTime = DateTime.MinValue; // MinValueを、初期化かリセット後とみなす。
         private DateTime stopTime = DateTime.MinValue;
+        private TimeSpan stackSpan = TimeSpan.Zero;
 
         private DispatcherTimer timer;
         public DispatcherTimer Timer { get => timer; }
@@ -36,10 +37,7 @@ namespace WorkTimeRecoder
             if (isCounting == false)
             {
                 isCounting = true;
-                if (startTime == DateTime.MinValue)
-                {
-                    startTime = DateTime.Now;
-                }
+                startTime = DateTime.Now;
             }
             timer.Start();
         }
@@ -49,26 +47,28 @@ namespace WorkTimeRecoder
             {
                 isCounting = false;
                 stopTime = DateTime.Now;
+                stackSpan = stopTime - startTime;
             }
             timer.Stop();
         }
         public void ResetCount()
         {
             startTime = DateTime.MinValue;
+            stackSpan = TimeSpan.Zero;
         }
 
         public TimeSpan GetCountTime()
         {
-            TimeSpan currentTime = new TimeSpan();
-            if(isCounting == true)
+            TimeSpan currentSpan = TimeSpan.Zero;
+            if (isCounting == true)
             {
-                currentTime = DateTime.Now - startTime;
+                currentSpan = (DateTime.Now - startTime) + stackSpan;
             }
             else
             {
-                currentTime = stopTime - startTime;
+                currentSpan = (stopTime - startTime) + stackSpan;
             }
-            return currentTime;
+            return currentSpan;
         }
 
         public string GetCountTime(string format)
