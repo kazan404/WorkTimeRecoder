@@ -7,10 +7,14 @@ namespace WorktimeRecoderTest
     [TestClass]
     public class Test_TimeCounter
     {
+        private void TimerTickFunc(Object sender, EventArgs e)
+        {
+        }
+
         [TestMethod]
         public void TestMethod1()
         {
-            TimeCounter timeCounter = new TimeCounter();
+            TimeCounter timeCounter = new TimeCounter(TimerTickFunc);
             timeCounter.StartCount();
 
             System.Threading.Thread.Sleep(3000);
@@ -23,7 +27,7 @@ namespace WorktimeRecoderTest
         [TestMethod]
         public void TestMethod2()
         {
-            TimeCounter timeCounter = new TimeCounter();
+            TimeCounter timeCounter = new TimeCounter(TimerTickFunc);
             timeCounter.StartCount();
 
             System.Threading.Thread.Sleep(3000);

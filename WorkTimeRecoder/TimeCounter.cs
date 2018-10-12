@@ -34,22 +34,16 @@ namespace WorkTimeRecoder
 
         public void StartCount()
         {
-            if (isCounting == false)
-            {
-                isCounting = true;
-                startTime = DateTime.Now;
-            }
+            startTime = DateTime.Now;
             timer.Start();
+            isCounting = timer.IsEnabled;
         }
         public void StopCount()
         {
-            if (isCounting == true)
-            {
-                isCounting = false;
-                stopTime = DateTime.Now;
-                stackSpan = stopTime - startTime;
-            }
+            stopTime = DateTime.Now;
+            stackSpan = stackSpan.Add((stopTime - startTime));
             timer.Stop();
+            isCounting = timer.IsEnabled;
         }
         public void ResetCount()
         {
