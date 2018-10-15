@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTimeRecoder", "WorkTimeRecoder\WorkTimeRecoder.csproj", "{B17CD9A9-A28B-4E80-A1B3-EFADB5516EF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorktimeRecoderTest", "WorktimeRecoderTest\WorktimeRecoderTest.csproj", "{C8156ADD-EDEC-4BE0-BF8A-5ACCEE5AE94D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkTimeRecoderTest", "WorkTimeRecoderTest\WorkTimeRecoderTest.csproj", "{D24D7078-4F12-4604-89CC-58385731D639}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{B17CD9A9-A28B-4E80-A1B3-EFADB5516EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B17CD9A9-A28B-4E80-A1B3-EFADB5516EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B17CD9A9-A28B-4E80-A1B3-EFADB5516EF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8156ADD-EDEC-4BE0-BF8A-5ACCEE5AE94D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8156ADD-EDEC-4BE0-BF8A-5ACCEE5AE94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8156ADD-EDEC-4BE0-BF8A-5ACCEE5AE94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8156ADD-EDEC-4BE0-BF8A-5ACCEE5AE94D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24D7078-4F12-4604-89CC-58385731D639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24D7078-4F12-4604-89CC-58385731D639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24D7078-4F12-4604-89CC-58385731D639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24D7078-4F12-4604-89CC-58385731D639}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
