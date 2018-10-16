@@ -25,6 +25,10 @@ namespace WorkTimeRecoder
         {
 
         }
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="timerTick">タイマーが1秒ごとに実行するメソッド</param>
         public TimeCounter(TimerTick timerTick)
         {
             timer = new DispatcherTimer(DispatcherPriority.Normal);
@@ -32,12 +36,18 @@ namespace WorkTimeRecoder
             timer.Tick += new EventHandler(timerTick);
         }
 
+        /// <summary>
+        /// タイマーを開始する
+        /// </summary>
         public void StartCount()
         {
             startTime = DateTime.Now;
             timer.Start();
             isCounting = timer.IsEnabled;
         }
+        /// <summary>
+        /// タイマーを止める
+        /// </summary>
         public void StopCount()
         {
             stopTime = DateTime.Now;
@@ -45,12 +55,18 @@ namespace WorkTimeRecoder
             timer.Stop();
             isCounting = timer.IsEnabled;
         }
+        /// <summary>
+        /// タイマーをリセットする
+        /// </summary>
         public void ResetCount()
         {
             startTime = DateTime.MinValue;
             stackSpan = TimeSpan.Zero;
         }
-
+        /// <summary>
+        /// 現在のタイマー値を取得する
+        /// </summary>
+        /// <returns></returns>
         public TimeSpan GetCountTime()
         {
             TimeSpan currentSpan = TimeSpan.Zero;
@@ -64,7 +80,11 @@ namespace WorkTimeRecoder
             }
             return currentSpan;
         }
-
+        /// <summary>
+        /// 現在のタイマー値を取得する
+        /// </summary>
+        /// <param name="format">取得するときのTimeSpan型のフォーマット</param>
+        /// <returns></returns>
         public string GetCountTime(string format)
         {
             TimeSpan currentTime = GetCountTime();
