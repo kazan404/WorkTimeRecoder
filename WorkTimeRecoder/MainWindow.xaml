@@ -8,7 +8,8 @@
         Title="WorkTimeCounter" Height="AUTO" Width="AUTO"
         ResizeMode="CanMinimize"
         WindowStyle="ToolWindow"
-        SizeToContent="WidthAndHeight">
+        SizeToContent="WidthAndHeight"
+        Closing="Window_Closing">
     <Grid Height="AUTO" Width="AUTO" HorizontalAlignment="Left" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"/>

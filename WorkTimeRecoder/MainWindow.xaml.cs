@@ -60,5 +60,11 @@ namespace WorkTimeRecoder
             }
             TimerListPanel.Children.Remove(delTimerPanel);
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
     }
 }

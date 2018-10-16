@@ -11,6 +11,8 @@ namespace WorkTimeRecoder
 {
     public partial class NotifyIconWrapper : Component
     {
+        private MainWindow window = new MainWindow();
+
         /// <summary>
         /// NotifyIconWrapper クラス を生成、初期化します。
         /// </summary>
@@ -41,7 +43,10 @@ namespace WorkTimeRecoder
         private void ToolStripMenuItem_Open_Click(object sender, EventArgs e)
         {
             // MainWindow を生成、表示
-            MainWindow window = new MainWindow();
+            if (window == null)
+            {
+                MainWindow window = new MainWindow();
+            }
             window.Show();
         }
 
