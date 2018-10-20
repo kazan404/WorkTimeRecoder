@@ -25,13 +25,16 @@ namespace WorkTimeRecoder
         private DeleteTimer deleteTimerFunc = null;
         public DeleteTimer DeleteTimerFunc { get => deleteTimerFunc; set => deleteTimerFunc = value; }
 
+        private BaloondSetter baloonsetter;
+        public BaloondSetter Baloonsetter { get => baloonsetter; set => baloonsetter = value; }
+
         private TimeCounter timeCounter;
 
         public TimerPanel()
         {
             InitializeComponent();
             timeCounter = new TimeCounter(TimerTickFunc);
-            TimeText.Text = "00:00:00";
+            TimeText.Text = "00:00:00";         
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -66,6 +69,11 @@ namespace WorkTimeRecoder
         private void TimerTickFunc(Object sender, EventArgs e)
         {
             TimeText.Text = timeCounter.GetCountTime(@"hh\:mm\:ss");
+            TimeSpan timeSpan = timeCounter.GetCountTime();
+            if ((int)(timeSpan.TotalSeconds) % 3600 == 0)
+            {
+                Baloonsetter(IssueNameText.Text, TimeText.Text);
+            }
         }
     }
 }

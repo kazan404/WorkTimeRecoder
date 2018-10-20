@@ -15,12 +15,17 @@ using System.Windows.Shapes;
 
 namespace WorkTimeRecoder
 {
+    public delegate void BaloondSetter(string baloonStr1, string baloonStr2);
+
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window
     {
         // TimeCounter timeCounter = new TimeCounter();
+
+        private BaloondSetter baloonsetter;
+        public BaloondSetter Baloonsetter { get => baloonsetter; set => baloonsetter = value; }
 
         public MainWindow()
         {
@@ -47,6 +52,7 @@ namespace WorkTimeRecoder
             }
             addTimerPanel.Name = newTimerName;
             addTimerPanel.DeleteTimerFunc = DeleteTimer;
+            addTimerPanel.Baloonsetter = this.baloonsetter;
             TimerListPanel.Children.Add(addTimerPanel);
             TimerListPanel.RegisterName(addTimerPanel.Name, addTimerPanel);
         }

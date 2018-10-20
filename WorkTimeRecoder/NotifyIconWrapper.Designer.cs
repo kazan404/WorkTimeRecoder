@@ -42,6 +42,7 @@
             this.timerNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("timerNotifyIcon.Icon")));
             this.timerNotifyIcon.Text = "This is a work time counter.";
             this.timerNotifyIcon.Visible = true;
+            this.timerNotifyIcon.DoubleClick += new System.EventHandler(this.ToolStripMenuItem_Open_Click);
             // 
             // timerContextMenuStrip
             // 
