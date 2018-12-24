@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataBaseControle;
 
 namespace WorkTimeRecoder
 {
@@ -73,6 +74,30 @@ namespace WorkTimeRecoder
             if ((int)(timeSpan.TotalSeconds) % 3600 == 0)
             {
                 Baloonsetter(IssueNameText.Text, TimeText.Text);
+            }
+        }
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            int id = int.Parse(IDNumberLabel.Content.ToString());
+
+            // TimeRecoderからIDは手入力できない
+            // このため、初期値の-１ならそのままインサートする
+            if (id < 0)
+            {
+                TaskData taskData = new TaskData(id, IssueNameText.Text, int.Parse(TimeText.Text));
+                List<TaskData> taskDatas = new List<TaskData>();
+                taskDatas.Add(taskData);
+                DataBaseControle.DataBaseControle.Insert(taskDatas);
+            }
+            else
+            {
+
             }
         }
     }

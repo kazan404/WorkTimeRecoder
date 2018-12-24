@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseControle
 {
-    class TaskData
+    public class TaskData
     {
         public int id;
         public string name;

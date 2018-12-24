@@ -25,13 +25,22 @@ namespace WorkTimeRecoder
         // TimeCounter timeCounter = new TimeCounter();
 
         private BaloondSetter baloonsetter;
-        public BaloondSetter Baloonsetter { get => baloonsetter; set => baloonsetter = value; }
+        public BaloondSetter Baloonsetter
+        {
+            get => baloonsetter;
+            set => baloonsetter = value;
+        }
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// タイマーの追加ボタンを押したときのイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerPlusButton_Click(object sender, RoutedEventArgs e)
         {
             if(TimerListPanel.Children.Count >= 10)
@@ -67,8 +76,14 @@ namespace WorkTimeRecoder
             TimerListPanel.Children.Remove(delTimerPanel);
         }
 
+        /// <summary>
+        /// ウィンドウを閉じる命令を受け取るイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            // ウィンドウの閉じるボタンでアプリ自体を終了させず、タスクトレイで動き続けるようにする。
             this.Hide();
             e.Cancel = true;
         }

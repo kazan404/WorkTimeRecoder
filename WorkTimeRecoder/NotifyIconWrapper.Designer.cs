@@ -34,6 +34,7 @@
             this.timerContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_Scheduler = new System.Windows.Forms.ToolStripMenuItem();
             this.timerContextMenuStrip.SuspendLayout();
             // 
             // timerNotifyIcon
@@ -48,7 +49,8 @@
             // 
             this.timerContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem_Open,
-            this.toolStripMenuItem_Exit});
+            this.toolStripMenuItem_Exit,
+            this.toolStripMenuItem_Scheduler});
             this.timerContextMenuStrip.Name = "timerContextMenuStrip";
             this.timerContextMenuStrip.Size = new System.Drawing.Size(99, 48);
             // 
@@ -63,6 +65,12 @@
             this.toolStripMenuItem_Exit.Name = "toolStripMenuItem_Exit";
             this.toolStripMenuItem_Exit.Size = new System.Drawing.Size(98, 22);
             this.toolStripMenuItem_Exit.Text = "終了";
+            // 
+            // toolStripMenuItem_Scheduler
+            // 
+            this.toolStripMenuItem_Scheduler.Name = "toolStripMenuItem_Scheduler";
+            this.toolStripMenuItem_Scheduler.Size = new System.Drawing.Size(32, 19);
+            this.toolStripMenuItem_Scheduler.Text = "toolStripMenuItem1";
             this.timerContextMenuStrip.ResumeLayout(false);
 
         }
@@ -73,5 +81,6 @@
         private System.Windows.Forms.ContextMenuStrip timerContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Open;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Exit;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Scheduler;
     }
 }

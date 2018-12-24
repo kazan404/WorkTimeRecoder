@@ -5,24 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WorkTimeRecoder"
              mc:Ignorable="d" 
-             d:DesignHeight="32"
+             d:DesignHeight="44"
              Height="AUTO"
              Width="AUTO"
              >
-    <StackPanel Orientation="Horizontal">
-        <Button Name="CloseButton" VerticalAlignment="Stretch" Width="28" 
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" Height="16"  Background="white">
+            <Label FontSize="12" Width="18" Content="ID:" Padding="0"/>
+            <Label Name="IDNumberLabel"  FontSize="12" Width="120" Content="-1" HorizontalContentAlignment="Left" Padding="0"/>
+            <Button Name="LoadButton" Width="36" 
+                    FontSize="12" Padding="0,0,0,0" Content="Load"
+                    Click="LoadButton_Click"/>
+            <Button Name="SaveButton" Width="36"
+                    FontSize="12" Padding="0,0,0,0" Content="Save"
+                    Click="SaveButton_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="28" Background="white">
+            <Button Name="CloseButton" VerticalAlignment="Stretch" Width="28" 
                 Click="CloseButton_Click"
-                Content="×" FontSize="24" FontFamily="Microsoft Sans Serif"/>
-        <TextBox Name="IssueNameText" VerticalAlignment="Stretch" Width="216"
-                 FontSize="24"/>
-        <TextBox Name="TimeText" VerticalAlignment="Stretch" Width="120" IsReadOnly="True"
-                 FontSize="24"/>
-        <Button Name="StartButton" VerticalAlignment="Stretch" Width="28"
-                Background="Green"
-                Click="StartButton_Click"/>
-        <Button Name="ResetButton" VerticalAlignment="Stretch" Width="28"
+                Content="×" FontSize="24" FontFamily="Microsoft Sans Serif" Padding="0,0,0,0"/>
+            <TextBox Name="IssueNameText" VerticalAlignment="Stretch" Width="216"
+                 FontSize="24" Padding="0,0,0,0"/>
+            <Button Name="StartButton" Width="28"
+                Content="●" FontSize="24" FontFamily="Microsoft Sans Serif" Background="Green"
+                Click="StartButton_Click" Margin="0" Padding="0,-3,0,0"/>
+            <TextBox Name="TimeText" VerticalAlignment="Stretch" Width="120" IsReadOnly="True"
+                 FontSize="24" Padding="-1,0,0,0"/>
+            <Button Name="ResetButton" VerticalAlignment="Stretch" Width="28"
                 Background="Ivory"
                 Click="ResetButton_Click"
-                Content="■" FontSize="24" FontFamily="Microsoft Sans Serif"/>
+                Content="■" FontSize="24" FontFamily="Microsoft Sans Serif" Padding="0"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

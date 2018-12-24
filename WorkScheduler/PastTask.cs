@@ -22,7 +22,14 @@ namespace WorkScheduler
 
         public PastTask()
         {
-
+            
+        }
+        public PastTask(int id, string name, float workVolume)
+        {
+            idNumber = id;
+            base.TaskName = name;
+            base.WorkVolume = workVolume;
+            UpdateDate();
         }
 
         /// <summary>

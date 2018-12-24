@@ -118,5 +118,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseControle\DataBaseControle.csproj">
+      <Project>{5c885b0c-c6c9-44b0-ab65-190b064a6570}</Project>
+      <Name>DataBaseControle</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

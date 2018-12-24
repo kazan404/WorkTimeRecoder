@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DataBaseControle;
 
 namespace WorkScheduler
 {
@@ -52,6 +53,10 @@ namespace WorkScheduler
             }
             taskList.Add(tempTask);
         }
+        public void AddTask(int id, string name, float volume)
+        {
+
+        }
         /// <summary>
         /// 過去の作業実績一覧のタスクを削除する
         /// </summary>
@@ -72,6 +77,7 @@ namespace WorkScheduler
             taskList[index].TaskName = name;
             taskList[index].WorkVolume = volume;
         }
+
         /// <summary>
         /// ファイルから過去の作業実績一覧を読み込む
         /// </summary>
@@ -83,6 +89,28 @@ namespace WorkScheduler
         /// </summary>
         public void SaveTask()
         {
+        }
+        /// <summary>
+        /// DBから過去の作業実績を読み込む
+        /// </summary>
+        public void LoadTaskFromDB(int id)
+        {
+            List<TaskData> loadData = new List<TaskData>();
+            loadData = DataBaseControle.DataBaseControle.Select(id);
+        }
+        /// <summary>
+        /// DBに過去の作業実績を掻き込む
+        /// </summary>
+        public void SaveTaskFromDB(PastTask saveTask)
+        {
+
+        }
+        /// <summary>
+        /// DBの過去の作業実績を更新する
+        /// </summary>
+        public void UpdateTaskFromDB(PastTask UpdateTask)
+        {
+
         }
 
     }

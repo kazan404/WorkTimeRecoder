@@ -10,8 +10,6 @@ using System.Windows.Forms;
 
 namespace WorkTimeRecoder
 {
-
-
     public partial class NotifyIconWrapper : Component
     {
         private MainWindow window = new MainWindow();
@@ -26,6 +24,9 @@ namespace WorkTimeRecoder
             this.toolStripMenuItem_Open.Click += ToolStripMenuItem_Open_Click;
             this.toolStripMenuItem_Exit.Click += ToolStripMenuItem_Exit_Click;
             window.Baloonsetter = ShowTimerBaloon;
+
+            // 起動時はここで最初のウィンドウを出すことでMainWindowのオブジェクトを１つに集約する
+            ToolStripMenuItem_Open_Click(null, null);
         }
 
         /// <summary>

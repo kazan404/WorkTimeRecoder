@@ -49,13 +49,23 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Test_DataBaseControle.cs" />
     <Compile Include="Test_TimeCounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test_WorkScheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataBaseControle\DataBaseControle.csproj">
+      <Project>{5c885b0c-c6c9-44b0-ab65-190b064a6570}</Project>
+      <Name>DataBaseControle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkScheduler\WorkScheduler.csproj">
+      <Project>{6e1813ea-f10e-4937-ab60-57708d0ea241}</Project>
+      <Name>WorkScheduler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WorkTimeRecoder\WorkTimeRecoder.csproj">
       <Project>{b17cd9a9-a28b-4e80-a1b3-efadb5516ef0}</Project>
       <Name>WorkTimeRecoder</Name>
