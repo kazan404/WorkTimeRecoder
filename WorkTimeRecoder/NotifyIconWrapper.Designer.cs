@@ -52,25 +52,25 @@
             this.toolStripMenuItem_Exit,
             this.toolStripMenuItem_Scheduler});
             this.timerContextMenuStrip.Name = "timerContextMenuStrip";
-            this.timerContextMenuStrip.Size = new System.Drawing.Size(99, 48);
+            this.timerContextMenuStrip.Size = new System.Drawing.Size(155, 70);
             // 
             // toolStripMenuItem_Open
             // 
             this.toolStripMenuItem_Open.Name = "toolStripMenuItem_Open";
-            this.toolStripMenuItem_Open.Size = new System.Drawing.Size(98, 22);
+            this.toolStripMenuItem_Open.Size = new System.Drawing.Size(154, 22);
             this.toolStripMenuItem_Open.Text = "表示";
             // 
             // toolStripMenuItem_Exit
             // 
             this.toolStripMenuItem_Exit.Name = "toolStripMenuItem_Exit";
-            this.toolStripMenuItem_Exit.Size = new System.Drawing.Size(98, 22);
+            this.toolStripMenuItem_Exit.Size = new System.Drawing.Size(154, 22);
             this.toolStripMenuItem_Exit.Text = "終了";
             // 
             // toolStripMenuItem_Scheduler
             // 
             this.toolStripMenuItem_Scheduler.Name = "toolStripMenuItem_Scheduler";
-            this.toolStripMenuItem_Scheduler.Size = new System.Drawing.Size(32, 19);
-            this.toolStripMenuItem_Scheduler.Text = "toolStripMenuItem1";
+            this.toolStripMenuItem_Scheduler.Size = new System.Drawing.Size(154, 22);
+            this.toolStripMenuItem_Scheduler.Text = "スケジューラを開く";
             this.timerContextMenuStrip.ResumeLayout(false);
 
         }

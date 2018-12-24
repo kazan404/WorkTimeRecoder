@@ -123,6 +123,10 @@
       <Project>{5c885b0c-c6c9-44b0-ab65-190b064a6570}</Project>
       <Name>DataBaseControle</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WorkScheduler\WorkScheduler.csproj">
+      <Project>{6e1813ea-f10e-4937-ab60-57708d0ea241}</Project>
+      <Name>WorkScheduler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

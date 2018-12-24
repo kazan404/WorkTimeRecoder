@@ -12,7 +12,8 @@ namespace WorkTimeRecoder
 {
     public partial class NotifyIconWrapper : Component
     {
-        private MainWindow window = new MainWindow();
+        private MainWindow window                           = new MainWindow();
+        private WorkScheduler.MainWindow schedulerWindow    = new WorkScheduler.MainWindow();
 
         /// <summary>
         /// NotifyIconWrapper クラス を生成、初期化します。
@@ -23,6 +24,7 @@ namespace WorkTimeRecoder
 
             this.toolStripMenuItem_Open.Click += ToolStripMenuItem_Open_Click;
             this.toolStripMenuItem_Exit.Click += ToolStripMenuItem_Exit_Click;
+            this.toolStripMenuItem_Scheduler.Click += ToolStripMenuItem_Scheduler_Click;
             window.Baloonsetter = ShowTimerBaloon;
 
             // 起動時はここで最初のウィンドウを出すことでMainWindowのオブジェクトを１つに集約する
@@ -75,6 +77,21 @@ namespace WorkTimeRecoder
         {
             // 現在のアプリケーションを終了
             System.Windows.Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// コンテキストメニュー "スケジューラを開く" を選択したとき呼ばれます。
+        /// </summary>
+        /// <param name="sender">呼び出し元オブジェクト</param>
+        /// <param name="e">イベントデータ</param>
+        private void ToolStripMenuItem_Scheduler_Click(object sender, EventArgs e)
+        {
+            // スケジューラのMainWindow を生成、表示
+            if (schedulerWindow == null)
+            {
+                WorkScheduler.MainWindow schedulerWindow = new WorkScheduler.MainWindow();
+            }
+            schedulerWindow.Show();
         }
     }
 }

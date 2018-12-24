@@ -710,5 +710,17 @@ namespace WorkScheduler
                 scheduleManage.StartDate = (DateTime)DatePicker_StartDate.SelectedDate;
             }
         }
+
+        /// <summary>
+        /// ウィンドウを閉じる命令を受け取るイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // ウィンドウの閉じるボタンでアプリ自体を終了させず、タスクトレイで動き続けるようにする。
+            this.Hide();
+            e.Cancel = true;
+        }
     }
 }
