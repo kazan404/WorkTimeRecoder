@@ -22,6 +22,8 @@ namespace WorkScheduler
     /// </summary>
     public partial class MainWindow : Window
     {
+        static readonly int SPRIT_DAY_TARM = 7;
+
         static string headerColumnName = "Header";
 
         ScheduleManage scheduleManage;
@@ -48,6 +50,8 @@ namespace WorkScheduler
             editID = -1;
             selectRowOnPastTask = -1;
             selectRowOnSchedule = -1;
+            pastTaskManage.AddTaskFromDB();
+            RefreshPastTask();
         }
         /// <summary>
         /// メニュー「ファイル-読み込み-作業実績」をクリックした時のイベント
@@ -436,11 +440,19 @@ namespace WorkScheduler
             for (int i = 0; i < scheduleManage.TaskList.Count; i++)
             {
                 ScheduleTask tempScheduleTask = scheduleManage.TaskList.Find(data => data.Priority == i+1);
+                /*
                 scheduleViewManage.ScheduleViewItemList.Add(new ScheduleViewItem {TaskName = tempScheduleTask.TaskName,
                                                                                   StartCell = drawStartCell,
                                                                                   EndCell = drawStartCell + (int)Math.Ceiling(tempScheduleTask.WorkVolume * 2) - 1
                 });
-                drawStartCell = drawStartCell + (int)Math.Ceiling(tempScheduleTask.WorkVolume * 2);
+                */
+                scheduleViewManage.ScheduleViewItemList.Add(new ScheduleViewItem
+                {
+                    TaskName = tempScheduleTask.TaskName,
+                    StartCell = drawStartCell,
+                    EndCell = drawStartCell + (int)Math.Ceiling(tempScheduleTask.WorkVolume - 1)
+                });
+                drawStartCell = drawStartCell + (int)Math.Ceiling(tempScheduleTask.WorkVolume);
             }
         }
 
@@ -462,14 +474,36 @@ namespace WorkScheduler
             int dayOffsetHoliday = 0;
             for (int i = 0; i <= MaxDate; i++)
             {
+                /*
                 while (scheduleManage.IsHoliday(scheduleManage.StartDate.AddDays((int)(i / 2 + dayOffsetHoliday))) == true)
                 {
                     dayOffsetHoliday++;
                 }
+                */
+                
+                while (scheduleManage.IsHoliday(scheduleManage.StartDate.AddDays((int)(i / SPRIT_DAY_TARM + dayOffsetHoliday))) == true)
+                {
+                    dayOffsetHoliday++;
+                }
+
 
                 // 列ヘッダにスラッシュ"/"が使えないため、書式設定で変更する
+                /*
                 ViewTable.Columns.Add(scheduleManage.StartDate.AddDays((int)(i / 2) + dayOffsetHoliday).ToString("MM月dd日\n") +
                         (i % 2 == 0 ? "AM" : "PM"));
+                */
+                string hourString = ((i % SPRIT_DAY_TARM) + 1).ToString();
+                /*
+                if (i % SPRIT_DAY_TARM == 0)
+                {
+                    ViewTable.Columns.Add(scheduleManage.StartDate.AddDays((int)(i / SPRIT_DAY_TARM) + dayOffsetHoliday).ToString("MM月dd日\n") + hourString);
+                }
+                else
+                {
+                    ViewTable.Columns.Add(hourString);
+                }
+                */
+                ViewTable.Columns.Add(scheduleManage.StartDate.AddDays((int)(i / SPRIT_DAY_TARM) + dayOffsetHoliday).ToString("MM月dd日\n") + hourString);
             }
 
             // 行の追加処理

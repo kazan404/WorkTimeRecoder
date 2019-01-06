@@ -16,18 +16,22 @@
             <RowDefinition Height="AUTO"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0"  Orientation="Horizontal" Height="AUTO" Width="AUTO">
+            <TextBox Name="NoworkTimeLabel" Height="36" Width="200" IsReadOnly="True"
+                     Text="TaskList" FontSize="24"/>
             <Button Name="TimerPlusButton"  Height="36" Width="36"
                     Click="TimerPlusButton_Click"
                     Content="＋" FontSize="24" FontFamily="Microsoft Sans Serif">
             </Button>
-            <TextBox Name="NoworkTimeLabel" Height="36" Width="200" IsReadOnly="True"
-                     Text="TaskList" FontSize="24"/>
-            <TextBox Name="NoworkTimerText" Height="36" Width="200" IsReadOnly="True"
+            <Button Name="LoadTimerButton"  Height="36" Width="64"
+                    Click="LoadTimerButton_Click"
+                    Content="Load" FontSize="24" FontFamily="Microsoft Sans Serif">
+            </Button>
+            <TextBox Name="NoworkTimerText" Height="36" Width="136" IsReadOnly="True"
                      FontSize="24">
             </TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1"  Name="TimerListPanel" Orientation="Vertical">
-
+            <!-- タイマーが追加されていくStackPanle。消しちゃダメな部分。 -->
         </StackPanel>
     </Grid>
 </Window>

@@ -55,7 +55,22 @@ namespace WorkScheduler
         }
         public void AddTask(int id, string name, float volume)
         {
-
+            PastTask tempTask = new PastTask();
+            tempTask.IdNumber = id;
+            tempTask.TaskName = name;
+            tempTask.WorkVolume = volume;
+            taskList.Add(tempTask);
+        }
+        public void AddTaskFromDB()
+        {
+            List<PastTask> pastTasks = LoadTaskFromDB();
+            foreach(PastTask pastTask in pastTasks)
+            {
+                // DBのデータは秒単位で記録されている。
+                // そのため、VolumeはHour単位に直し、かつ、最低1時間とする。
+                float DBTaskVolume = (float)Math.Floor((pastTask.WorkVolume / 3600) + 1.0f);
+                AddTask(pastTask.IdNumber, pastTask.TaskName, DBTaskVolume);
+            }
         }
         /// <summary>
         /// 過去の作業実績一覧のタスクを削除する
@@ -95,8 +110,21 @@ namespace WorkScheduler
         /// </summary>
         public void LoadTaskFromDB(int id)
         {
-            List<TaskData> loadData = new List<TaskData>();
-            loadData = DataBaseControle.DataBaseControle.Select(id);
+            TaskData loadData = DataBaseControle.DataBaseControle.Select(id);
+        }
+        public List<PastTask> LoadTaskFromDB()
+        {
+            List<TaskData> loadDatas = DataBaseControle.DataBaseControle.Select();
+            List<PastTask> pastTasks = new List<PastTask>();
+            foreach(TaskData taskData in loadDatas)
+            {
+                PastTask pastTask = new PastTask();
+                pastTask.IdNumber = taskData.Id;
+                pastTask.TaskName = taskData.Name;
+                pastTask.WorkVolume = taskData.WorkTime;
+                pastTasks.Add(pastTask);
+            }
+            return pastTasks;
         }
         /// <summary>
         /// DBに過去の作業実績を掻き込む

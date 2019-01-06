@@ -67,6 +67,9 @@
     <Compile Include="NotifyIconWrapper.Designer.cs">
       <DependentUpon>NotifyIconWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskListWindow.xaml.cs">
+      <DependentUpon>TaskListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TimeCounter.cs" />
     <Compile Include="TimerPanel.xaml.cs">
       <DependentUpon>TimerPanel.xaml</DependentUpon>
@@ -83,6 +86,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TaskListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TimerPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

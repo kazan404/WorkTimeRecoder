@@ -12,10 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataBaseControle;
 
 namespace WorkTimeRecoder
 {
     public delegate void BaloondSetter(string baloonStr1, string baloonStr2);
+    public delegate void AddDBTask(int id);
 
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
@@ -66,6 +68,10 @@ namespace WorkTimeRecoder
             TimerListPanel.RegisterName(addTimerPanel.Name, addTimerPanel);
         }
 
+        /// <summary>
+        /// すでに追加済みのタイマーを削除する。
+        /// </summary>
+        /// <param name="timerName"></param>
         public void DeleteTimer(string timerName)
         {
             TimerPanel delTimerPanel = (TimerPanel)TimerListPanel.FindName(timerName);
@@ -86,6 +92,31 @@ namespace WorkTimeRecoder
             // ウィンドウの閉じるボタンでアプリ自体を終了させず、タスクトレイで動き続けるようにする。
             this.Hide();
             e.Cancel = true;
+        }
+
+        /// <summary>
+        ///　Loadボタンを押したときのイベント
+        /// </summary>
+        /// <remarks>メインウィンドウのLoadボタン</remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadTimerButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<TaskData> taskDatas = DataBaseControle.DataBaseControle.Select();
+            TaskListWindow taskWindow = new TaskListWindow(taskDatas, AddTask);
+            taskWindow.Owner = GetWindow(this);
+            taskWindow.ShowDialog();
+            return;
+        }
+
+        private void AddTask(int id)
+        {
+            TaskData taskdata = DataBaseControle.DataBaseControle.Select(id);
+            TimerPlusButton_Click(null, null);
+            TimerPanel lastPanel = ((TimerPanel)(TimerListPanel.Children[TimerListPanel.Children.Count - 1]));
+            lastPanel.IDNumberLabel.Content = taskdata.Id.ToString();
+            lastPanel.IssueNameText.Text = taskdata.Name.ToString();
+            return;
         }
     }
 }

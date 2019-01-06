@@ -35,7 +35,7 @@ namespace WorkTimeRecoder
         {
             InitializeComponent();
             timeCounter = new TimeCounter(TimerTickFunc);
-            TimeText.Text = "00:00:00";         
+            TimeText.Text = "00:00:00";        
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -84,20 +84,27 @@ namespace WorkTimeRecoder
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            int id = int.Parse(IDNumberLabel.Content.ToString());
+            int id = -1;
+            if (int.TryParse(IDNumberLabel.Content.ToString(), out id) == false)
+            {
+                return;
+            }
 
+            TimeSpan timeSpan = timeCounter.GetCountTime();
             // TimeRecoderからIDは手入力できない
             // このため、初期値の-１ならそのままインサートする
-            if (id < 0)
+            if (id == -1)
             {
-                TaskData taskData = new TaskData(id, IssueNameText.Text, int.Parse(TimeText.Text));
-                List<TaskData> taskDatas = new List<TaskData>();
-                taskDatas.Add(taskData);
-                DataBaseControle.DataBaseControle.Insert(taskDatas);
+                id = Guid.NewGuid().GetHashCode();
+                TaskData taskData = new TaskData(id, IssueNameText.Text, (int)timeSpan.TotalSeconds);
+                DataBaseControle.DataBaseControle.Insert(taskData);
             }
             else
             {
-
+                // 既存データの場合は、現在の時刻を取得し、DBの時間と合算後、合算した時間でDBを更新する。
+                TaskData taskData = new TaskData(id, IssueNameText.Text, (int)timeSpan.TotalSeconds);
+                taskData.WorkTime += DataBaseControle.DataBaseControle.Select(taskData.Id).WorkTime;
+                DataBaseControle.DataBaseControle.Update(taskData);
             }
         }
     }

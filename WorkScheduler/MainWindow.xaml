@@ -89,7 +89,7 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Stretch" Height="120" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="1">
             <Grid>
                 <Label Name="Label_Name" Content="タスク名:" HorizontalAlignment="Left" Margin="74,10,0,0" VerticalAlignment="Top" Width="Auto"/>
-                <Label Name="Label_WorkVolume" Content="作業量(人日):" HorizontalAlignment="Left" Margin="51,43,0,0" VerticalAlignment="Top" Width="Auto"/>
+                <Label Name="Label_WorkVolume" Content="作業量(時):" HorizontalAlignment="Left" Margin="51,43,0,0" VerticalAlignment="Top" Width="Auto"/>
                 <Label Name="Label_Priority" Content="優先度:" HorizontalAlignment="Left" Margin="86,76,0,0" VerticalAlignment="Top" Width="Auto"/>
                 <TextBox Name="Text_Name"  HorizontalAlignment="Left" Height="23" Margin="137,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"
                          PreviewLostKeyboardFocus="Text_Name_PreviewLostKeyboardFocus"/>
