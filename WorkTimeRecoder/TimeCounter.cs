@@ -76,7 +76,7 @@ namespace WorkTimeRecoder
             }
             else
             {
-                currentSpan = (stopTime - startTime) + stackSpan;
+                currentSpan = stackSpan;
             }
             return currentSpan;
         }

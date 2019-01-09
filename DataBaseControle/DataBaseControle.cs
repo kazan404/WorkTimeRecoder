@@ -216,7 +216,7 @@ namespace DataBaseControle
                 conn.Open();
                 using (SQLiteCommand command = conn.CreateCommand())
                 {
-                    command.CommandText = "UPDATE " + TABLE_NAME + " SET Name = " + targetData.Name + ", WorkTime = " + targetData.WorkTime + " where ID = " + targetData.Id.ToString();
+                    command.CommandText = "UPDATE " + TABLE_NAME + " SET Name = '" + targetData.Name + "', WorkTime = " + targetData.WorkTime + " where ID = " + targetData.Id.ToString();
                     command.ExecuteNonQuery();
                 }
                 conn.Close();
