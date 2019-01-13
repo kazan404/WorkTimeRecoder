@@ -98,6 +98,7 @@ namespace WorkTimeRecoder
                 id = Guid.NewGuid().GetHashCode();
                 TaskData taskData = new TaskData(id, IssueNameText.Text, (int)timeSpan.TotalSeconds);
                 DataBaseControle.DataBaseControle.Insert(taskData);
+                IDNumberLabel.Content = id.ToString();
             }
             else
             {
