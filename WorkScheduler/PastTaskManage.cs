@@ -84,6 +84,13 @@ namespace WorkScheduler
             }
         }
         /// <summary>
+        /// 過去の作業実績一覧のタスクをすべて削除する
+        /// </summary>
+        public void DeleteAlltask()
+        {
+            taskList.Clear();
+        }
+        /// <summary>
         /// タスクの内容を編集する
         /// </summary>
         public void EditTask(string name, float volume, int id)

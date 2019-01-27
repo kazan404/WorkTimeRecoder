@@ -60,7 +60,7 @@ namespace WorkScheduler
         /// <param name="e"></param>
         private void MenuItem_PastTask_Load_Click(object sender, RoutedEventArgs e)
         {
-            LoadPastTask();
+            LoadPastTaskDB();
         }
         /// <summary>
         /// メニュー「ファイル-読み込み-スケジュール」をクリックした時のイベント
@@ -656,6 +656,23 @@ namespace WorkScheduler
                 finally
                 {
                 }
+            }
+        }
+        private void LoadPastTaskDB()
+        {
+            try
+            {
+                pastTaskManage.DeleteAlltask();
+                pastTaskManage.AddTaskFromDB();
+                RefreshPastTask();
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+
             }
         }
         /// <summary>
