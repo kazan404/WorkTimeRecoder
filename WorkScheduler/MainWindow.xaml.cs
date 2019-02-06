@@ -78,7 +78,7 @@ namespace WorkScheduler
         /// <param name="e"></param>
         private void MenuItem_PastTask_Save_Click(object sender, RoutedEventArgs e)
         {
-            SavePastTask();
+            SavePastTaskDB();
         }
         /// <summary>
         /// メニュー「ファイル-保存-スケジュール」をクリックした時のイベント
@@ -626,6 +626,15 @@ namespace WorkScheduler
                 }
             }
         }
+
+        /// <summary>
+        /// 過去の作業実績をDBに保存する
+        /// </summary>
+        private void SavePastTaskDB()
+        {
+            pastTaskManage.SaveTaskToDB();
+        }
+
         /// <summary>
         /// 過去の作業実績をファイルから読み込む
         /// </summary>
@@ -658,6 +667,9 @@ namespace WorkScheduler
                 }
             }
         }
+        /// <summary>
+        /// DBから過去の作業実績を読み込んで、リストを作り直す。
+        /// </summary>
         private void LoadPastTaskDB()
         {
             try

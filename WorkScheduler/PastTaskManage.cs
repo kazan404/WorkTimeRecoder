@@ -99,19 +99,6 @@ namespace WorkScheduler
             taskList[index].TaskName = name;
             taskList[index].WorkVolume = volume;
         }
-
-        /// <summary>
-        /// ファイルから過去の作業実績一覧を読み込む
-        /// </summary>
-        public void LoadTask()
-        {
-        }
-        /// <summary>
-        /// ファイルにタスク一覧を保存する
-        /// </summary>
-        public void SaveTask()
-        {
-        }
         /// <summary>
         /// DBから過去の作業実績を読み込む
         /// </summary>
@@ -133,17 +120,37 @@ namespace WorkScheduler
             }
             return pastTasks;
         }
+
+        /// <summary>
+        /// ファイルにタスク一覧を保存する
+        /// </summary>
+        public void SaveTaskToDB()
+        {
+            foreach(PastTask pastTask in TaskList)
+            {
+                TaskData addTask = new TaskData(pastTask.IdNumber, pastTask.TaskName, (int)((pastTask.WorkVolume - 1.0f) * 3600));
+                TaskData tempTask = DataBaseControle.DataBaseControle.Select(pastTask.IdNumber);
+                if(tempTask.WorkTime < 0)
+                {
+                    DataBaseControle.DataBaseControle.Insert(addTask);
+                }
+                else
+                {
+                    DataBaseControle.DataBaseControle.Update(addTask);
+                }
+            }
+        }
         /// <summary>
         /// DBに過去の作業実績を掻き込む
         /// </summary>
-        public void SaveTaskFromDB(PastTask saveTask)
+        public void AddTaskToDB(PastTask saveTask)
         {
 
         }
         /// <summary>
         /// DBの過去の作業実績を更新する
         /// </summary>
-        public void UpdateTaskFromDB(PastTask UpdateTask)
+        public void UpdateTaskToDB(PastTask UpdateTask)
         {
 
         }

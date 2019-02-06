@@ -19,6 +19,9 @@ namespace DataBaseControle
 
         public TaskData()
         {
+            Id = 0;
+            Name = "";
+            WorkTime = -1;
             return;
         }
 

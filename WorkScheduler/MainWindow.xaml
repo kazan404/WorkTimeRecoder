@@ -10,14 +10,19 @@
                 <MenuItem Header="読み込み">
                     <MenuItem Name="MenuItem_PastTask_Load" Header="作業実績"
                               Click="MenuItem_PastTask_Load_Click"/>
+                    <!--
                     <MenuItem Name="MenuItem_Schedule_Load" Header="スケジュール"
                               Click="MenuItem_Schedule_Load_Click"/>
+                    -->
                 </MenuItem>
+                
                 <MenuItem Header="保存">
                     <MenuItem Name="MenuItem_PastTask_Save" Header="作業実績"
                               Click="MenuItem_PastTask_Save_Click"/>
+                    <!--
                     <MenuItem Name="MenuItem_Schedule_Save" Header="スケジュール"
                               Click="MenuItem_Schedule_Save_Click"/>
+                    -->
                 </MenuItem>
                 <Separator/>
                 <MenuItem Name="MenuItem_Exit" Header="終了" Click="MenuItem_Exit_Click"></MenuItem>
