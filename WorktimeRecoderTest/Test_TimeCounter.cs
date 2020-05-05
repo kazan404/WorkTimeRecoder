@@ -12,7 +12,7 @@ namespace WorktimeRecoderTest
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void StartCount_GetCountTime_タイマー開始と取得が想定通りにできる()
         {
             DateTime startTime = DateTime.Now;
 
@@ -33,21 +33,7 @@ namespace WorktimeRecoderTest
         }
 
         [TestMethod]
-        public void TestMethod2()
-        {
-            TimeCounter timeCounter = new TimeCounter(TimerTickFunc);
-            timeCounter.StartCount();
-
-            System.Threading.Thread.Sleep(3000);
-
-            TimeSpan checkTimeSpan = timeCounter.GetCountTime();
-
-            Console.WriteLine(checkTimeSpan);
-        }
-
-
-        [TestMethod]
-        public void TestMethod3()
+        public void StopCount_タイマーの停止が想定通り動いている()
         {
             TimeCounter timeCounter = new TimeCounter(TimerTickFunc);
             timeCounter.StartCount();
@@ -55,15 +41,64 @@ namespace WorktimeRecoderTest
             System.Threading.Thread.Sleep(3000);
 
             timeCounter.StopCount();
+
+            System.Threading.Thread.Sleep(3000);
+
             timeCounter.StartCount();
 
             System.Threading.Thread.Sleep(4000);
 
             timeCounter.StopCount();
 
-            TimeSpan checkTimeSpan = timeCounter.GetCountTime();
+            string checkStr = timeCounter.GetCountTime(@"hh\:mm\:ss");
 
-            Console.WriteLine(checkTimeSpan);
+            string check = "00:00:07";
+
+            Console.WriteLine(checkStr);
+
+            Assert.AreEqual(checkStr, check);
+        }
+
+        [TestMethod]
+        public void ResetCount_タイマーリセットが想定通り動いている()
+        {
+            TimeCounter timeCounter = new TimeCounter(TimerTickFunc);
+            timeCounter.StartCount();
+
+            System.Threading.Thread.Sleep(3000);
+
+            timeCounter.StopCount();
+
+            timeCounter.ResetCount();
+
+            string checkStr = timeCounter.GetCountTime(@"hh\:mm\:ss");
+
+            string check = "00:00:00";
+
+            Assert.AreEqual(checkStr, check);
+        }
+
+        [TestMethod]
+        public void ResetCount_StartCount_タイマーリセット後のカウントが想定通り動いている()
+        {
+            TimeCounter timeCounter = new TimeCounter(TimerTickFunc);
+            timeCounter.StartCount();
+
+            System.Threading.Thread.Sleep(3000);
+
+            timeCounter.StopCount();
+
+            timeCounter.ResetCount();
+
+            timeCounter.StartCount();
+
+            System.Threading.Thread.Sleep(3000);
+
+            string checkStr = timeCounter.GetCountTime(@"hh\:mm\:ss");
+
+            string check = "00:00:03";
+
+            Assert.AreEqual(checkStr, check);
         }
     }
 }

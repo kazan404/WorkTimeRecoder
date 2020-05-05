@@ -49,10 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test_DataBaseControle.cs" />
     <Compile Include="Test_TimeCounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test_WorkScheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
