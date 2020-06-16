@@ -68,6 +68,21 @@ namespace WorkTimeRecoder
             TimerListPanel.RegisterName(addTimerPanel.Name, addTimerPanel);
         }
 
+        public void AddDefinedIssueTimer(string issueName, string idNumber)
+        {
+            if (string.IsNullOrEmpty(issueName) || string.IsNullOrEmpty(idNumber))
+            {
+                return;
+            }
+            if (TimerListPanel.Children.Count >= 10)
+            {
+                return;
+            }
+            TimerPlusButton_Click(null, null);
+            TimerPanel timerPanel = TimerListPanel.Children[TimerListPanel.Children.Count - 1] as TimerPanel;
+            timerPanel.SetApperanceData(issueName, idNumber);
+        }
+
         /// <summary>
         /// すでに追加済みのタイマーを削除する。
         /// </summary>

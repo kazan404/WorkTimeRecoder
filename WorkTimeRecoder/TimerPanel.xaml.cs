@@ -38,6 +38,12 @@ namespace WorkTimeRecoder
             TimeText.Text = "00:00:00";        
         }
 
+        public void SetApperanceData(string issueName, string idNumber)
+        {
+            IssueNameText.Text = issueName;
+            IDNumberLabel.Content = idNumber;
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             deleteTimerFunc(this.Name);
