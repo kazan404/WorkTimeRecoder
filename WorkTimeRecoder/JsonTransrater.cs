@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace WorkTimeRecoder
 {
-    static class JsonTransrater
+    public static class JsonTransrater
     {
         public static string SerializeToJson(object serializeObject)
         {
